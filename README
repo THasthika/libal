@@ -1,15 +1,20 @@
-#libTHB
+libTHB
+======
 
 A C library with useful data structures and algorithms
 
-## Data Structures
+Data Structures
+---------------
 - Linked List (Double)
 - Stack
 - Queue
 - Hash Table (development)
 
-## Algorithms
-### Sorting
+Algorithms
+----------
+
+Sorting Algorithms
+``````````````````
 - Insertion Sort
 - Merge Sort
 - Heap Sort
