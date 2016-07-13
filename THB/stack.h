@@ -18,4 +18,6 @@ void THB_stack_push(THB_Stack *stack, void *data);
 void THB_stack_pop(THB_Stack *stack, void *data);
 unsigned int THB_stack_size(THB_Stack *stack);
 
+#define THB_stack_peak(stack) (stack->top);
+
 #endif // THB_STACK_H
