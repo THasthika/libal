@@ -15,7 +15,8 @@ tests/check_list.o: tests/check_list.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
  /usr/include/x86_64-linux-gnu/bits/stdio.h \
- /usr/include/x86_64-linux-gnu/bits/stdio2.h THB/list.h
+ /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/assert.h \
+ THB/list.h
 
 /usr/include/stdc-predef.h:
 
@@ -60,5 +61,7 @@ tests/check_list.o: tests/check_list.c /usr/include/stdc-predef.h \
 /usr/include/x86_64-linux-gnu/bits/stdio.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+/usr/include/assert.h:
 
 THB/list.h:

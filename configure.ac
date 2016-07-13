@@ -1,6 +1,6 @@
 AC_PREREQ([2.69])
 
-AC_INIT([thb-library], [0.01], [tharindubathigama@gmail.com])
+AC_INIT([libTHB], [0.01], [tharindubathigama@gmail.com])
 
 AC_CONFIG_SRCDIR([THB/list.c])
 

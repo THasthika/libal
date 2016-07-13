@@ -61,10 +61,10 @@ am__make_running_with_option = \
   test $$has_opt = yes
 am__make_dryrun = (target_option=n; $(am__make_running_with_option))
 am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
-pkgdatadir = $(datadir)/thb-library
-pkgincludedir = $(includedir)/thb-library
-pkglibdir = $(libdir)/thb-library
-pkglibexecdir = $(libexecdir)/thb-library
+pkgdatadir = $(datadir)/libthb
+pkgincludedir = $(includedir)/libthb
+pkglibdir = $(libdir)/libthb
+pkglibexecdir = $(libexecdir)/libthb
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -79,9 +79,10 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-unknown-linux-gnu
 host_triplet = x86_64-unknown-linux-gnu
-TESTS = check_list$(EXEEXT) check_sort$(EXEEXT) \
-	check_hash_table$(EXEEXT)
+TESTS = check_list$(EXEEXT) check_sort$(EXEEXT) check_queue$(EXEEXT) \
+	check_stack$(EXEEXT) check_hash_table$(EXEEXT)
 check_PROGRAMS = check_list$(EXEEXT) check_sort$(EXEEXT) \
+	check_queue$(EXEEXT) check_stack$(EXEEXT) \
 	check_hash_table$(EXEEXT)
 subdir = .
 DIST_COMMON = INSTALL NEWS README AUTHORS ChangeLog \
@@ -156,10 +157,15 @@ check_hash_table_DEPENDENCIES = libTHB.la
 am_check_list_OBJECTS = tests/check_list.$(OBJEXT)
 check_list_OBJECTS = $(am_check_list_OBJECTS)
 check_list_DEPENDENCIES = libTHB.la
-am_check_sort_OBJECTS = tests/check_sort.$(OBJEXT) \
-	tests/util.$(OBJEXT)
+am_check_queue_OBJECTS = tests/check_queue.$(OBJEXT)
+check_queue_OBJECTS = $(am_check_queue_OBJECTS)
+check_queue_DEPENDENCIES = libTHB.la
+am_check_sort_OBJECTS = tests/check_sort.$(OBJEXT)
 check_sort_OBJECTS = $(am_check_sort_OBJECTS)
 check_sort_DEPENDENCIES = libTHB.la
+am_check_stack_OBJECTS = tests/check_stack.$(OBJEXT)
+check_stack_OBJECTS = $(am_check_stack_OBJECTS)
+check_stack_DEPENDENCIES = libTHB.la
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -195,9 +201,11 @@ am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
 SOURCES = $(libTHB_la_SOURCES) $(check_hash_table_SOURCES) \
-	$(check_list_SOURCES) $(check_sort_SOURCES)
+	$(check_list_SOURCES) $(check_queue_SOURCES) \
+	$(check_sort_SOURCES) $(check_stack_SOURCES)
 DIST_SOURCES = $(libTHB_la_SOURCES) $(check_hash_table_SOURCES) \
-	$(check_list_SOURCES) $(check_sort_SOURCES)
+	$(check_list_SOURCES) $(check_queue_SOURCES) \
+	$(check_sort_SOURCES) $(check_stack_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -419,13 +427,13 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/tharindu/Projects/thb-library/build-aux/missing aclocal-1.14
+ACLOCAL = ${SHELL} /home/tharindu/Projects/libTHB/build-aux/missing aclocal-1.14
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AR = ar
-AUTOCONF = ${SHELL} /home/tharindu/Projects/thb-library/build-aux/missing autoconf
-AUTOHEADER = ${SHELL} /home/tharindu/Projects/thb-library/build-aux/missing autoheader
-AUTOMAKE = ${SHELL} /home/tharindu/Projects/thb-library/build-aux/missing automake-1.14
+AUTOCONF = ${SHELL} /home/tharindu/Projects/libTHB/build-aux/missing autoconf
+AUTOHEADER = ${SHELL} /home/tharindu/Projects/libTHB/build-aux/missing autoheader
+AUTOMAKE = ${SHELL} /home/tharindu/Projects/libTHB/build-aux/missing automake-1.14
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -458,7 +466,7 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/tharindu/Projects/thb-library/build-aux/missing makeinfo
+MAKEINFO = ${SHELL} /home/tharindu/Projects/libTHB/build-aux/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -467,11 +475,11 @@ OBJDUMP = objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
-PACKAGE = thb-library
+PACKAGE = libthb
 PACKAGE_BUGREPORT = tharindubathigama@gmail.com
-PACKAGE_NAME = thb-library
-PACKAGE_STRING = thb-library 0.01
-PACKAGE_TARNAME = thb-library
+PACKAGE_NAME = libTHB
+PACKAGE_STRING = libTHB 0.01
+PACKAGE_TARNAME = libthb
 PACKAGE_URL = 
 PACKAGE_VERSION = 0.01
 PATH_SEPARATOR = :
@@ -481,10 +489,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.01
-abs_builddir = /home/tharindu/Projects/thb-library
-abs_srcdir = /home/tharindu/Projects/thb-library
-abs_top_builddir = /home/tharindu/Projects/thb-library
-abs_top_srcdir = /home/tharindu/Projects/thb-library
+abs_builddir = /home/tharindu/Projects/libTHB
+abs_srcdir = /home/tharindu/Projects/libTHB
+abs_top_builddir = /home/tharindu/Projects/libTHB
+abs_top_srcdir = /home/tharindu/Projects/libTHB
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -513,7 +521,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/tharindu/Projects/thb-library/build-aux/install-sh
+install_sh = ${SHELL} /home/tharindu/Projects/libTHB/build-aux/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -522,7 +530,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/tharindu/Software/TEST
+prefix = /usr/local
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -534,7 +542,7 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 ACLOCAL_AMFLAGS = -I m4 --install
-AM_CFLAGS = -g3 --std=c99 -DNDEBUG
+AM_CFLAGS = -g3 --std=c99 -dNDEBUG
 
 # bin_PROGRAMS = cp
 # cp_SOURCES = src/cp.c src/cp.h src/common.c src/common.h
@@ -544,8 +552,12 @@ libTHB_la_SOURCES = THB/list.c THB/list.h THB/queue.c THB/queue.h THB/stack.c TH
 nobase_include_HEADERS = THB/list.h THB/queue.h THB/stack.h THB/hash_table.h
 check_list_SOURCES = tests/check_list.c
 check_list_LDADD = libTHB.la
-check_sort_SOURCES = tests/check_sort.c tests/util.c tests/util.h
+check_sort_SOURCES = tests/check_sort.c
 check_sort_LDADD = libTHB.la
+check_queue_SOURCES = tests/check_queue.c
+check_queue_LDADD = libTHB.la
+check_stack_SOURCES = tests/check_stack.c
+check_stack_LDADD = libTHB.la
 check_hash_table_SOURCES = tests/check_hash_table.c
 check_hash_table_LDADD = libTHB.la
 EXTRA_DIST = m4/NOTES
@@ -682,14 +694,24 @@ tests/check_list.$(OBJEXT): tests/$(am__dirstamp) \
 check_list$(EXEEXT): $(check_list_OBJECTS) $(check_list_DEPENDENCIES) $(EXTRA_check_list_DEPENDENCIES) 
 	@rm -f check_list$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(check_list_OBJECTS) $(check_list_LDADD) $(LIBS)
-tests/check_sort.$(OBJEXT): tests/$(am__dirstamp) \
+tests/check_queue.$(OBJEXT): tests/$(am__dirstamp) \
 	tests/$(DEPDIR)/$(am__dirstamp)
-tests/util.$(OBJEXT): tests/$(am__dirstamp) \
+
+check_queue$(EXEEXT): $(check_queue_OBJECTS) $(check_queue_DEPENDENCIES) $(EXTRA_check_queue_DEPENDENCIES) 
+	@rm -f check_queue$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(check_queue_OBJECTS) $(check_queue_LDADD) $(LIBS)
+tests/check_sort.$(OBJEXT): tests/$(am__dirstamp) \
 	tests/$(DEPDIR)/$(am__dirstamp)
 
 check_sort$(EXEEXT): $(check_sort_OBJECTS) $(check_sort_DEPENDENCIES) $(EXTRA_check_sort_DEPENDENCIES) 
 	@rm -f check_sort$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(check_sort_OBJECTS) $(check_sort_LDADD) $(LIBS)
+tests/check_stack.$(OBJEXT): tests/$(am__dirstamp) \
+	tests/$(DEPDIR)/$(am__dirstamp)
+
+check_stack$(EXEEXT): $(check_stack_OBJECTS) $(check_stack_DEPENDENCIES) $(EXTRA_check_stack_DEPENDENCIES) 
+	@rm -f check_stack$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(check_stack_OBJECTS) $(check_stack_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -709,8 +731,9 @@ include THB/$(DEPDIR)/queue.Plo
 include THB/$(DEPDIR)/stack.Plo
 include tests/$(DEPDIR)/check_hash_table.Po
 include tests/$(DEPDIR)/check_list.Po
+include tests/$(DEPDIR)/check_queue.Po
 include tests/$(DEPDIR)/check_sort.Po
-include tests/$(DEPDIR)/util.Po
+include tests/$(DEPDIR)/check_stack.Po
 
 .c.o:
 	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -980,6 +1003,20 @@ check_list.log: check_list$(EXEEXT)
 check_sort.log: check_sort$(EXEEXT)
 	@p='check_sort$(EXEEXT)'; \
 	b='check_sort'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+check_queue.log: check_queue$(EXEEXT)
+	@p='check_queue$(EXEEXT)'; \
+	b='check_queue'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+check_stack.log: check_stack$(EXEEXT)
+	@p='check_stack$(EXEEXT)'; \
+	b='check_stack'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

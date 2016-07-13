@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 #include <THB/list.h>
 
@@ -22,13 +23,13 @@ int main(int argc, char **argv) {
 	a = 10;
 	THB_list_insert_before(list, NULL, &a);
 
-	printf("%d", *(int *)item->data);
+	assert(1 == *(int *)item->data);
 	item = item->next;
-	printf("%d", *(int *)item->data);
+	assert(2 == *(int *)item->data);
 	item = item->next;
-	printf("%d", *(int *)item->data);
+	assert(3 == *(int *)item->data);
 	item = item->next;
-	printf("%d", *(int *)item->data);
+	assert(10 == *(int *)item->data);
 	item = item->next;
 
 	THB_list_destroy(list);
