@@ -3,7 +3,6 @@
 
 #include <stdlib.h>
 
-#include <THB/stack.h>
 #include <THB/list.h>
 
 typedef struct {
