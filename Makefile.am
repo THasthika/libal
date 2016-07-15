@@ -9,7 +9,7 @@ AM_CFLAGS = -g3 --std=c99 -dNDEBUG
 lib_LTLIBRARIES = libTHB.la
 
 libTHB_la_SOURCES = THB/list.c THB/list.h THB/queue.c THB/queue.h THB/stack.c THB/stack.h THB/hash_table.c THB/hash_table.h THB/sort.h THB/merge_sort.c THB/insertion_sort.c THB/heap_sort.c
-nobase_include_HEADERS = THB/list.h THB/queue.h THB/stack.h THB/hash_table.h
+nobase_include_HEADERS = THB/list.h THB/queue.h THB/stack.h THB/hash_table.h THB/sort.h
 
 TESTS = check_list check_sort check_queue check_stack check_hash_table
 
