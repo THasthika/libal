@@ -1,6 +1,7 @@
 ACLOCAL_AMFLAGS = -I m4 --install
 
-AM_CFLAGS = -g3 --std=c99 -dNDEBUG
+# AM_CFLAGS = -g3 --std=c99 -DNDEBUG
+AM_CFLAGS = --std=c99
 
 # bin_PROGRAMS = cp
 # cp_SOURCES = src/cp.c src/cp.h src/common.c src/common.h

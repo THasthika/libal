@@ -71,7 +71,7 @@ void THB_hash_table_remove(THB_HashTable *hash_table, char *key, void *data) {
 	}
 }
 
-void THB_hash_table_search(THB_HashTable *hash_table, char *key, void *data) {
+short THB_hash_table_search(THB_HashTable *hash_table, char *key, void *data) {
 	unsigned int k = hash_key(key, hash_table->count);
 	THB_List *list = hash_table->table + k;
 	THB_ListItem *list_item;
@@ -87,7 +87,9 @@ void THB_hash_table_search(THB_HashTable *hash_table, char *key, void *data) {
 		list_item = item->item;
 		if(list_item != NULL)
 			memcpy(data, list_item->data, hash_table->item_size);
+		return 1;
 	}
+	return 0;
 }
 
 short THB_hash_table_exists(THB_HashTable *hash_table, char *key) {	
