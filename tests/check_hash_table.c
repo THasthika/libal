@@ -13,10 +13,12 @@ int main(int argc, char **argv) {
 
 	THB_hash_table_insert(hash_table, "one", &arr[0]);
 
+	THB_hash_table_insert(hash_table, "one", &arr[1]);
+
 	int a;
 	THB_hash_table_search(hash_table, "one", &a);
 
-	assert(a == arr[0]);
+	assert(a == arr[1]);
 
 	THB_hash_table_destroy(hash_table);
 	free(hash_table);

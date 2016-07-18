@@ -90,7 +90,8 @@ void THB_list_remove(THB_List *list, THB_ListItem *item, void *data) {
 		list->head = item->next;
 	if(list->tail == item)
 		list->tail = item->prev;
-	memcpy(data, item->data, list->item_size);
+	if(data != NULL)
+		memcpy(data, item->data, list->item_size);
 	if(list->destroy != NULL)
 		list->destroy(item->data);
 	free(item->data);

@@ -38,15 +38,19 @@ void THB_hash_table_destroy(THB_HashTable *hash_table) {
 
 void THB_hash_table_insert(THB_HashTable *hash_table, char *key, void *data) {
 
-	THB_list_insert_before(hash_table->data, NULL, data);
-	THB_ListItem *item = THB_list_tail(hash_table->data);
+	THB_hash_table_remove(hash_table, key, NULL);
 
 	unsigned int k = hash_key(key, hash_table->count);
 	THB_List *list = hash_table->table + k;
+
+	THB_list_insert_before(hash_table->data, NULL, data);
+	THB_ListItem *item = THB_list_tail(hash_table->data);
+
 	THB_HashItem hash_item = {
 		key,
 		item
 	};
+
 	THB_list_insert_before(list, NULL, &hash_item);
 }
 
@@ -85,7 +89,7 @@ short THB_hash_table_search(THB_HashTable *hash_table, char *key, void *data) {
 	}
 	if(list_item != NULL) {
 		list_item = item->item;
-		if(list_item != NULL)
+		if(list_item != NULL && data != NULL)
 			memcpy(data, list_item->data, hash_table->item_size);
 		return 1;
 	}

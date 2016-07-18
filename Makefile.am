@@ -9,7 +9,7 @@ AM_CFLAGS = --std=c99
 
 lib_LTLIBRARIES = libTHB.la
 
-libTHB_la_SOURCES = THB/list.c THB/list.h THB/queue.c THB/queue.h THB/stack.c THB/stack.h THB/hash_table.c THB/hash_table.h THB/sort.h THB/merge_sort.c THB/insertion_sort.c THB/heap_sort.c
+libTHB_la_SOURCES = THB/list.c THB/list.h THB/queue.c THB/queue.h THB/stack.c THB/stack.h THB/hash_table.c THB/hash_table.h THB/sort.h THB/sort_merge.c THB/sort_insertion.c THB/sort_heap.c
 nobase_include_HEADERS = THB/list.h THB/queue.h THB/stack.h THB/hash_table.h THB/sort.h
 
 TESTS = check_list check_sort check_queue check_stack check_hash_table
