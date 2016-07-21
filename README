@@ -21,7 +21,7 @@ Sorting Algorithms
 
 Installation
 ------------
-1) run `autoreconf -i` in the repo directory
+1) run `./autogen.sh` in the repo directory
 2) run `./configure`
 3) run `make` to build the project
 4) run `make install` to install it to the system
