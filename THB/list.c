@@ -97,4 +97,5 @@ void THB_list_remove(THB_List *list, THB_ListItem *item, void *data) {
 	free(item->data);
 	free(item);
 	item = NULL;
+	list->count--;
 }
