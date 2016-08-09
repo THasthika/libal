@@ -15,6 +15,14 @@ int main(int argc, char **argv) {
 
 	THB_hash_table_insert(hash_table, "one", &arr[1]);
 
+	THB_hash_table_insert(hash_table, "a", &arr[2]);
+
+	THB_hash_table_insert(hash_table, "three", &arr[3]);
+
+	short res;
+	res = THB_hash_table_exists(hash_table, "P");
+	assert(res == 0);
+
 	int a;
 	THB_hash_table_search(hash_table, "one", &a);
 
