@@ -42,7 +42,6 @@ void THB_hash_table_insert(THB_HashTable *hash_table, char *key, void *data) {
 
 	unsigned int k = hash_key(key, hash_table->count);
 	THB_List *list = hash_table->table + k;
-
 	THB_list_insert_before(hash_table->data, NULL, data);
 	THB_ListItem *item = THB_list_tail(hash_table->data);
 
