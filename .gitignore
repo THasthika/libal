@@ -16,3 +16,10 @@ Makefile.in
 /install-sh
 /missing
 /stamp-h1
+/build-aux/*
+!/build-aux/.gitignore
+/m4/*
+!/m4/NOTES
+
+/src/.deps
+*.o
