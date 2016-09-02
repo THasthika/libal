@@ -1,0 +1,16 @@
+AM_CFLAGS = -g3 --std=c99
+AM_LDFLAGS = -g3
+
+lib_LTLIBRARIES = libTHB.la
+
+libTHB_la_SOURCES = list.c list.h\
+		    queue.c queue.h\
+		    stack.c stack.h\
+		    hash_table.c hash_table.h\
+		    sort.h sort_merge.c sort_insertion.c sort_heap.c
+
+nobase_include_HEADERS = list.h\
+			 queue.h\
+			 stack.h\
+			 hash_table.h\
+			 sort.h

@@ -22,7 +22,9 @@ AC_PROG_CC
 
 # Checks for library functions.
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile\
+		 THB/Makefile\
+		 test/Makefile])
 
 AM_INIT_AUTOMAKE([1.11 subdir-objects -Wall -Werror])
 
