@@ -39,21 +39,21 @@ void init_array(int *arr, unsigned int count) {
 void check_insertion_sort(unsigned int count) {
 	int arr[count];
 	init_array(arr, count);
-	THB_insertion_sort(arr, sizeof(int), count, comp_int);
+	insertion_sort(arr, sizeof(int), count, comp_int);
 	check_array(arr, count, ASC);
 }
 
 void check_heap_sort(unsigned int count) {
 	int arr[count];
 	init_array(arr, count);
-	THB_heap_sort(arr, sizeof(int), count, comp_int);
+	heap_sort(arr, sizeof(int), count, comp_int);
 	check_array(arr, count, ASC);
 }
 
 void check_merge_sort(unsigned int count) {
 	int arr[count];
 	init_array(arr, count);
-	THB_merge_sort(arr, &arr[0], &arr[count - 1], sizeof(int), comp_int);
+	merge_sort(arr, &arr[0], &arr[count - 1], sizeof(int), comp_int);
 	check_array(arr, count, ASC);
 }
 
@@ -63,9 +63,9 @@ int main(int argc, char **argv) {
 	check_insertion_sort(10000);
 	check_heap_sort(10000);
 	check_merge_sort(10000);
-	// THB_insertion_sort(arr, sizeof(int), count, comp_int);
-	// THB_heap_sort(arr, sizeof(int), count, comp_int);
-	// THB_merge_sort(arr, &arr[0], &arr[count-1], sizeof(int), comp_int);
+	// insertion_sort(arr, sizeof(int), count, comp_int);
+	// heap_sort(arr, sizeof(int), count, comp_int);
+	// merge_sort(arr, &arr[0], &arr[count-1], sizeof(int), comp_int);
 	
 	return 0;
 }

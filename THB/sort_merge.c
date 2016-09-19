@@ -33,12 +33,12 @@ void merge(void *arr, void *p, void *q, void *r, size_t size, int (*comp)(void *
 	free(tmp_arr);
 }
 
-void THB_merge_sort(void *arr, void *p, void *r, size_t size, int (*comp)(void *key1, void *key2)) {
+void merge_sort(void *arr, void *p, void *r, size_t size, int (*comp)(void *key1, void *key2)) {
 	void *q = p;
 	if(r - p > size) {
 		q = p + ((r - p + size) / (2 * size)) * size;
-		THB_merge_sort(arr, p, q, size, comp);
-		THB_merge_sort(arr, q+size, r, size, comp);
+		merge_sort(arr, p, q, size, comp);
+		merge_sort(arr, q+size, r, size, comp);
 	}
 	merge(arr, p, q, r, size, comp);
 }

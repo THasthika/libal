@@ -3,7 +3,7 @@
 
 #include <THB/sort.h>
 
-void THB_insertion_sort(void *arr, size_t size, unsigned int count, int (*comp)(void *key1, void *key2)) {
+void insertion_sort(void *arr, size_t size, unsigned int count, int (*comp)(void *key1, void *key2)) {
 	void *key = malloc(size);
 	for(int j = 1; j < count; j++) {
 		memcpy(key, (arr + size*j), size);

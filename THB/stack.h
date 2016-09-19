@@ -1,23 +1,23 @@
-#ifndef THB_STACK_H
-#define THB_STACK_H 1
+#ifndef STACK_H
+#define STACK_H 1
 
 #include <stdlib.h>
 
-typedef struct _THB_Stack {
+typedef struct _Stack {
         unsigned long capacity;
         size_t size;
         size_t inc_size;
         void (*destroy)(void *data);
         void *bottom;
         void *top;
-} THB_Stack;
+} Stack;
 
-void THB_stack_create(THB_Stack *stack, size_t size, size_t inc_size, void (*destroy)(void *data));
-void THB_stack_destroy(THB_Stack *stack);
-void THB_stack_push(THB_Stack *stack, void *data);
-void THB_stack_pop(THB_Stack *stack, void *data);
-unsigned int THB_stack_size(THB_Stack *stack);
+void stack_create(Stack *stack, size_t size, size_t inc_size, void (*destroy)(void *data));
+void stack_destroy(Stack *stack);
+void stack_push(Stack *stack, void *data);
+void stack_pop(Stack *stack, void *data);
+unsigned int stack_size(Stack *stack);
 
-#define THB_stack_peak(stack) (stack->top);
+#define stack_peak(stack) (stack->top);
 
-#endif // THB_STACK_H
+#endif // STACK_H

@@ -58,7 +58,7 @@ unsigned int build_min_heapify(void *arr, size_t size, unsigned int count, int (
 	return count;
 }
 
-void THB_heap_sort(void *arr, size_t size, unsigned int count, int (*comp)(void *key1, void *key2)) {
+void heap_sort(void *arr, size_t size, unsigned int count, int (*comp)(void *key1, void *key2)) {
 	unsigned int heapsize = build_max_heapify(arr, size, count, comp);
 	for(int i = count - 1; i >= 1; i--) {
 		swap(arr, arr + size * i, size);
