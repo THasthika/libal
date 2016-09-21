@@ -4,31 +4,36 @@
 
 #include <THB/hash_table.h>
 
-int main(int argc, char **argv) {
+void check(HashTable *table, char *key, int val)
+{
+	int x;
+	hash_table_search(table, key, &x);
+	assert(x == val);
+}
 
-	int arr[] = {5123, 1232, 124123, 12423, 1231, 123, 32, 21};
+int main(int argc, char **argv)
+{
+	HashTable ht;
 
-	HashTable *hash_table = (HashTable*) malloc(sizeof(HashTable));
-	hash_table_create(hash_table, sizeof(int), 20, NULL);
+	hash_table_create(&ht, sizeof(int), 2, NULL);
 
-	hash_table_insert(hash_table, "one", &arr[0]);
+	int t;
 
-	hash_table_insert(hash_table, "one", &arr[1]);
+	t = 1;
+	hash_table_insert(&ht, "a", &t);
 
-	hash_table_insert(hash_table, "a", &arr[2]);
+	t = 8;
+	hash_table_insert(&ht, "ab", &t);
 
-	hash_table_insert(hash_table, "three", &arr[3]);
+	t = 10;
+	hash_table_insert(&ht, "abc", &t);
 
-	short res;
-	res = hash_table_exists(hash_table, "P");
-	assert(res == 0);
+	check(&ht, "a", 1);
 
-	int a;
-	hash_table_search(hash_table, "one", &a);
+	check(&ht, "ab", 8);
 
-	assert(a == arr[1]);
 
-	hash_table_destroy(hash_table);
-	free(hash_table);
+	hash_table_destroy(&ht);
+
 	return 0;
 }
