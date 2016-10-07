@@ -1,5 +1,5 @@
-AM_CFLAGS = -g3 --std=c99
-AM_LDFLAGS = -g3
+AM_CFLAGS = -g --std=gnu11
+AM_LDFLAGS = -g
 
 lib_LTLIBRARIES = libTHB.la
 

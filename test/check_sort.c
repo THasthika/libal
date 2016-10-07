@@ -60,12 +60,9 @@ void check_merge_sort(unsigned int count) {
 int main(int argc, char **argv) {
 	srand(time(NULL));
 
-	check_insertion_sort(10000);
-	check_heap_sort(10000);
-	check_merge_sort(10000);
-	// THB_insertion_sort(arr, sizeof(int), count, comp_int);
-	// THB_heap_sort(arr, sizeof(int), count, comp_int);
-	// THB_merge_sort(arr, &arr[0], &arr[count-1], sizeof(int), comp_int);
+	check_insertion_sort(10);
+	check_heap_sort(10);
+	check_merge_sort(10);
 	
 	return 0;
 }

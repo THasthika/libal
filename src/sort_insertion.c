@@ -14,4 +14,5 @@ void THB_insertion_sort(void *arr, size_t size, unsigned int count, int (*comp)(
 		}
 		memcpy((arr + size*(i+1)), key, size);
 	}
+	free(key);
 }

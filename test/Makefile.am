@@ -1,5 +1,5 @@
-AM_CFLAGS = -g3 --std=c99 -I../src
-AM_LDFLAGS = -g3 -L../src
+AM_CFLAGS = -g --std=gnu11 -I../src
+AM_LDFLAGS = -static -g -L../src
 
 check_PROGRAMS = check_list\
 		 check_sort\
