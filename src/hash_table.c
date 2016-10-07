@@ -36,6 +36,7 @@ void hash_table_destroy(HashTable *hash_table) {
 	free(hash_table->table);
 }
 
+// there is a non-threatning(guessing) bug in the below function regarding the key string stored in the HashItem
 void hash_table_insert(HashTable *hash_table, char *key, void *data) {
 
 	hash_table_remove(hash_table, key, NULL);
