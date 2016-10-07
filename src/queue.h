@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-#include <THB/list.h>
+#include "list.h"
 
 typedef THB_List THB_Queue;
 

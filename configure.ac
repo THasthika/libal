@@ -2,8 +2,6 @@ AC_PREREQ([2.69])
 
 AC_INIT([libTHB], [0.01], [tharindubathigama@gmail.com])
 
-AC_CONFIG_SRCDIR([THB/list.c])
-
 AC_CONFIG_HEADERS([config.h])
 
 AC_CONFIG_AUX_DIR([build-aux])
@@ -23,7 +21,7 @@ AC_PROG_CC
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile\
-		 THB/Makefile\
+		 src/Makefile\
 		 test/Makefile])
 
 AM_INIT_AUTOMAKE([1.11 subdir-objects -Wall -Werror])

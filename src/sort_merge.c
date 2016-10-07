@@ -2,7 +2,7 @@
 #include <string.h>
 #include <math.h>
 
-#include <THB/sort.h>
+#include "sort.h"
 
 void merge(void *arr, void *p, void *q, void *r, size_t size, int (*comp)(void *key1, void *key2)) {
 	void *tmp_arr = malloc(r - p + size);

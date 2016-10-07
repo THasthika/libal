@@ -2,7 +2,7 @@
 #include <assert.h>
 
 
-#include <THB/hash_table.h>
+#include <hash_table.h>
 
 int main(int argc, char **argv) {
 

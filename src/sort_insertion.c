@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <THB/sort.h>
+#include "sort.h"
 
 void THB_insertion_sort(void *arr, size_t size, unsigned int count, int (*comp)(void *key1, void *key2)) {
 	void *key = malloc(size);

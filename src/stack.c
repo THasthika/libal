@@ -1,4 +1,4 @@
-#include <THB/stack.h>
+#include "stack.h"
 
 #include <stdlib.h>
 #include <string.h>

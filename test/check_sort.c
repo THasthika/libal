@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include <THB/sort.h>
+#include <sort.h>
 
 #define ASC 1
 #define DSC 2

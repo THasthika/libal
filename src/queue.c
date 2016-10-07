@@ -1,6 +1,5 @@
-#include <THB/queue.h>
-
-#include <THB/list.h>
+#include "queue.h"
+#include "list.h"
 
 #include <stdlib.h>
 #include <string.h>

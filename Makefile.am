@@ -1,5 +1,5 @@
 ACLOCAL_AMFLAGS = -I m4 --install
 
-SUBDIRS = THB test
+SUBDIRS = src test
 
 EXTRA_DIST = m4/NOTES

@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <THB/list.h>
-#include <THB/hash_table.h>
+#include "list.h"
+#include "hash_table.h"
 
 unsigned int hash_key(char *key, unsigned int count) {
 	unsigned int k = 0;

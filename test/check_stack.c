@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include <THB/stack.h>
+#include <stack.h>
 
 int main(int argc, char **argv) {
 

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include <THB/queue.h>
+#include <queue.h>
 
 int main(int argc, char **argv) {
 

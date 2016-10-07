@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <THB/sort.h>
+#include "sort.h"
 
 #define PARENT(i) ((i+1)/2) - 1
 #define LEFT(i) (2*(i+1)) - 1
