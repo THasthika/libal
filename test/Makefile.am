@@ -1,11 +1,12 @@
-AM_CFLAGS = -g --std=gnu11 -I../src
-AM_LDFLAGS = -static -g -L../src
+AM_CFLAGS = -g3 --std=gnu11 -I../src
+AM_LDFLAGS = -static -g3 -L../src
 
 check_PROGRAMS = check_list\
 		 check_sort\
 		 check_queue\
 		 check_stack\
-		 check_hash_table
+		 check_hash_table\
+		 check_bst
 
 TESTS = $(check_PROGRAMS)
 
@@ -23,3 +24,6 @@ check_stack_LDADD = -lTHB
 
 check_hash_table_SOURCES = check_hash_table.c
 check_hash_table_LDADD = -lTHB
+
+check_bst_SOURCES = check_bst.c
+check_bst_LDADD = -lTHB

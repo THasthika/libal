@@ -1,11 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <assert.h>
 
 #include "list.h"
 
-int main(int argc, char **argv) {
-
+int main(int argc, char **argv)
+{
 	int a, b, c;
 	a = 1;
 	b = 2;
@@ -31,6 +32,11 @@ int main(int argc, char **argv) {
 	item = item->next;
 	assert(10 == *(int *)item->data);
 	item = item->next;
+
+	int d;
+	THB_list_remove(list, THB_list_head(list), &d);
+
+	assert(d == 1);
 
 	THB_list_destroy(list);
 

@@ -3,8 +3,32 @@
 
 #include <queue.h>
 
-int main(int argc, char **argv) {
+void test_ptr()
+{
+	int arr[] = {1, 2, 3, 4, 5, 6};
 
+	THB_Queue *queue = (THB_Queue*) malloc(sizeof(THB_Queue));
+	THB_queue_create(queue, sizeof(int*), NULL);
+
+	int *p = arr;
+
+	for(int i = 0; i < 6; i++) {
+		THB_queue_enqueue(queue, &p);
+		p += 1;
+	}
+
+	int *a = NULL;
+	for(int i = 0; i < 6; i++) {
+		THB_queue_dequeue(queue, &a);
+		assert(arr+i == a);
+	}
+
+	THB_queue_destroy(queue);
+	free(queue);
+}
+
+int main(int argc, char **argv)
+{
 	int arr[] = {1, 2, 3, 4, 5, 6};
 
 	THB_Queue *queue = (THB_Queue*) malloc(sizeof(THB_Queue));
@@ -22,5 +46,7 @@ int main(int argc, char **argv) {
 
 	THB_queue_destroy(queue);
 	free(queue);
+
+	test_ptr();
 	return 0;
 }
