@@ -10,11 +10,13 @@ libTHB_la_SOURCES = list.c list.h\
 		    stack.c stack.h\
 		    hash_table.c hash_table.h\
 		    sort.h sort.c\
-		    bst.h bst.c
+		    bst.h bst.c\
+		    rbt.h rbt.c
 
 THB_include_HEADERS = list.h\
 			 queue.h\
 			 stack.h\
 			 hash_table.h\
 			 sort.h\
-			 bst.h
+			 bst.h\
+			 rbt.h

@@ -1,6 +1,6 @@
 AC_PREREQ([2.69])
 
-AC_INIT([libTHB], [0.01], [tharindubathigama@gmail.com])
+AC_INIT([THB], [1.0], [tharindubathigama@gmail.com])
 
 AC_CONFIG_HEADERS([config.h])
 
