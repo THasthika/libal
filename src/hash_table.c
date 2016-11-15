@@ -108,7 +108,7 @@ void THB_hash_table_remove(THB_HashTable *hash_table, char *key, void *data)
 	free(item);
 }
 
-int THB_hash_table_search(THB_HashTable *hash_table, char *key, void *data)
+int THB_hash_table_search(THB_HashTable *hash_table, char *key, void **data)
 {
 	int k = hash_key(key, hash_table->count);
 	THB_HashItem *item = hash_table->table[k];
@@ -120,6 +120,6 @@ int THB_hash_table_search(THB_HashTable *hash_table, char *key, void *data)
 	if(item == NULL)
 		return 0;
 	if(data != NULL)
-		memcpy(data, item->data, hash_table->item_size);
+		*data = item->data;
 	return 1;
 }

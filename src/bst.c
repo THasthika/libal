@@ -29,16 +29,13 @@ void bst_swap(THB_BST *tree, THB_BSTNode *a, THB_BSTNode *b)
 {
 	if(a == NULL || b == NULL) return;
 	unsigned int tk = a->key;
-	void *td = malloc(tree->item_size);
-	memcpy(td, a->data, tree->item_size);
+	void *td = a->data;
 
 	a->key = b->key;
-	memcpy(a->data, b->data, tree->item_size);
+	a->data = b->data;
 
 	b->key = tk;
-	memcpy(b->data, td, tree->item_size);
-
-	free(td);
+	b->data = td;
 }
 
 void bst_remove(THB_BST *tree, THB_BSTNode *node)
@@ -161,7 +158,7 @@ void THB_bst_remove(THB_BST *tree, unsigned int key, void *data)
 	bst_remove(tree, node);
 }
 
-int THB_bst_search(THB_BST *tree, unsigned int key, void *data)
+int THB_bst_search(THB_BST *tree, unsigned int key, void **data)
 {
 	THB_BSTNode *node = tree->root;
 	while(node != NULL && node->key != key) {
@@ -171,7 +168,8 @@ int THB_bst_search(THB_BST *tree, unsigned int key, void *data)
 			node = node->left;
 	}
 	if(node == NULL) return 0;
-	memcpy(data, node->data, tree->item_size);
+	if(data != NULL)
+		*data = node->data;
 	return 1;
 }
 

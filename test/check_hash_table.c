@@ -20,8 +20,10 @@ int main(int argc, char **argv)
 
 	THB_hash_table_insert(hash_table, "one", &arr[1]);
 
-	if(THB_hash_table_search(hash_table, "one", &b))
-		assert(b == arr[1]);
+	int *c;
+
+	if(THB_hash_table_search(hash_table, "one", (void**)&c))
+		assert(*c == arr[1]);
 
 	assert(THB_hash_table_search(hash_table, "two", NULL) == 0);
 
