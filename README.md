@@ -23,7 +23,7 @@ A C library with useful data structures and algorithms
 
 ###Installation
 
-- run `./autogen.sh` in the repo directory
-- run `./configure`
-- run `make` to build the project
-- run `make install` to install it to the system
+1. run `./autogen.sh` in the repo directory
+2. run `./configure`
+3. run `make` to build the project
+4. run `make install` to install it to the system
