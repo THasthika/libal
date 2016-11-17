@@ -1,4 +1,4 @@
-AM_CFLAGS = -g -std=gnu11
+AM_CFLAGS = -g
 AM_LDFLAGS = -g
 
 lib_LTLIBRARIES = libTHB.la
