@@ -24,7 +24,7 @@ AC_CONFIG_FILES([Makefile\
 		 src/Makefile\
 		 test/Makefile])
 
-AM_INIT_AUTOMAKE([1.11 subdir-objects -Wall -Werror])
+AM_INIT_AUTOMAKE([1.11 foreign subdir-objects -Wall -Werror])
 
 AM_PROG_AR
 
