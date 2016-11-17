@@ -1,4 +1,4 @@
-AC_PREREQ([2.69])
+AC_PREREQ([2.0])
 
 AC_INIT([THB], [1.0], [tharindubathigama@gmail.com])
 
