@@ -1,4 +1,4 @@
-AM_CFLAGS = -g -std=c11
+AM_CFLAGS = -g -std=c99
 AM_LDFLAGS = -g
 
 lib_LTLIBRARIES = libTHB.la
