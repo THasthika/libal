@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "common.h"
 #include "hash_table.h"
 
 unsigned int hash_key(char *key, unsigned int count)

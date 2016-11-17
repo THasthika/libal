@@ -1,4 +1,4 @@
-AM_CFLAGS = -g3 -I../src
+AM_CFLAGS = -g3 -I../src -std=c11
 AM_LDFLAGS = -static -g3 -L../src
 
 check_PROGRAMS = check_list\
