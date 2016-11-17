@@ -1,5 +1,8 @@
 language: c
 
+compiler:
+        - gcc
+
 before_install: ./autogen.sh
 install: ./configure && make && make check
 
