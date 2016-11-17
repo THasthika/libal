@@ -1,4 +1,4 @@
-AM_CFLAGS = -g3 --std=gnu11 -I../src
+AM_CFLAGS = -g3 -std=gnu11 -I../src
 AM_LDFLAGS = -static -g3 -L../src
 
 check_PROGRAMS = check_list\
