@@ -5,9 +5,7 @@ check_PROGRAMS = check_list\
 		 check_sort\
 		 check_queue\
 		 check_stack\
-		 check_hash_table\
-		 check_bst\
-		 check_rbt
+		 check_hash_table
 
 TESTS = $(check_PROGRAMS)
 
@@ -25,9 +23,3 @@ check_stack_LDADD = -lTHB
 
 check_hash_table_SOURCES = check_hash_table.c
 check_hash_table_LDADD = -lTHB
-
-check_bst_SOURCES = check_bst.c
-check_bst_LDADD = -lTHB
-
-check_rbt_SOURCES = check_rbt.c
-check_rbt_LDADD = -lTHB
