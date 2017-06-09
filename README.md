@@ -1,11 +1,10 @@
-![travis-ci]
-(https://travis-ci.org/tharindu96/THB.svg?branch=master)
+[![Build Status](https://travis-ci.org/tharindu96/libal.svg?branch=master)](https://travis-ci.org/tharindu96/libal)
 
-#THB
+# libal
 
 A C library with useful data structures and algorithms
 
-##Data Structures
+## Data Structures
 
 - Linked List (Double)
 - Stack
@@ -13,15 +12,15 @@ A C library with useful data structures and algorithms
 - Hash Table
 - Binary Search Tree
 
-##Algorithms
+## Algorithms
 
-###Sorting Algorithms
+### Sorting Algorithms
 
 - Insertion Sort
 - Merge Sort
 - Heap Sort
 
-###Installation
+### Installation
 
 1. run `./autogen.sh` in the repo directory
 2. run `./configure`
