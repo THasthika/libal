@@ -43,7 +43,7 @@ void check_insertion_sort(unsigned int count)
 {
 	int arr[count];
 	init_array(arr, count);
-	THB_insertion_sort(arr, sizeof(int), count, comp_int);
+	AL_insertion_sort(arr, sizeof(int), count, comp_int);
 	check_array(arr, count, ASC);
 }
 
@@ -51,7 +51,7 @@ void check_heap_sort(unsigned int count)
 {
 	int arr[count];
 	init_array(arr, count);
-	THB_heap_sort(arr, sizeof(int), count, comp_int);
+	AL_heap_sort(arr, sizeof(int), count, comp_int);
 	check_array(arr, count, ASC);
 }
 
@@ -59,7 +59,7 @@ void check_merge_sort(unsigned int count)
 {
 	int arr[count];
 	init_array(arr, count);
-	THB_merge_sort(arr, &arr[0], &arr[count - 1], sizeof(int), comp_int);
+	AL_merge_sort(arr, &arr[0], &arr[count - 1], sizeof(int), comp_int);
 	check_array(arr, count, ASC);
 }
 

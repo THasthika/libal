@@ -1,34 +1,34 @@
-#ifndef THB_LIST_H
-#define THB_LIST_H 1
+#ifndef AL_LIST_H
+#define AL_LIST_H 1
 
 #include <stdlib.h>
 
-typedef struct _THB_ListItem {
-	struct _THB_ListItem *prev;
-	struct _THB_ListItem *next;
+typedef struct _AL_ListItem {
+	struct _AL_ListItem *prev;
+	struct _AL_ListItem *next;
 	void *data;
-} THB_ListItem;
+} AL_ListItem;
 
-typedef struct _THB_List {
-	THB_ListItem *head;
-	THB_ListItem *tail;
+typedef struct _AL_List {
+	AL_ListItem *head;
+	AL_ListItem *tail;
 	size_t item_size;
 	unsigned int count;
 	void (*destroy)(void *data);
-} THB_List;
+} AL_List;
 
-void THB_list_create(THB_List *list, size_t item_size, void (*destroy)(void *data));
-void THB_list_destroy(THB_List *list);
+void AL_list_create(AL_List *list, size_t item_size, void (*destroy)(void *data));
+void AL_list_destroy(AL_List *list);
 
-void THB_list_insert_after(THB_List *list, THB_ListItem *item, void *data);
-void THB_list_insert_before(THB_List *list, THB_ListItem *item, void *data);
+void AL_list_insert_after(AL_List *list, AL_ListItem *item, void *data);
+void AL_list_insert_before(AL_List *list, AL_ListItem *item, void *data);
 
-void THB_list_remove(THB_List *list, THB_ListItem *item, void *data);
+void AL_list_remove(AL_List *list, AL_ListItem *item, void *data);
 
-#define THB_list_head(list) (list->head)
-#define THB_list_tail(list) (list->tail)
-#define THB_list_count(list) (list->count)
-#define THB_list_next(item) (list->next)
-#define THB_list_prev(item) (list->prev)
+#define AL_list_head(list) (list->head)
+#define AL_list_tail(list) (list->tail)
+#define AL_list_count(list) (list->count)
+#define AL_list_next(item) (list->next)
+#define AL_list_prev(item) (list->prev)
 
-#endif // THB_LIST_H
+#endif // AL_LIST_H

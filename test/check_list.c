@@ -12,17 +12,17 @@ int main(int argc, char **argv)
 	b = 2;
 	c = 3;
 
-	THB_List *list = (THB_List*) malloc(sizeof(THB_List));
-	THB_list_create(list, sizeof(int), NULL);
+	AL_List *list = (AL_List*) malloc(sizeof(AL_List));
+	AL_list_create(list, sizeof(int), NULL);
 
-	THB_list_insert_after(list, NULL, &a);
-	THB_ListItem *item = THB_list_head(list);
+	AL_list_insert_after(list, NULL, &a);
+	AL_ListItem *item = AL_list_head(list);
 
-	THB_list_insert_before(list, NULL, &b);
-	THB_list_insert_before(list, NULL, &c);
+	AL_list_insert_before(list, NULL, &b);
+	AL_list_insert_before(list, NULL, &c);
 
 	a = 10;
-	THB_list_insert_before(list, NULL, &a);
+	AL_list_insert_before(list, NULL, &a);
 
 	assert(1 == *(int *)item->data);
 	item = item->next;
@@ -34,11 +34,11 @@ int main(int argc, char **argv)
 	item = item->next;
 
 	int d;
-	THB_list_remove(list, THB_list_head(list), &d);
+	AL_list_remove(list, AL_list_head(list), &d);
 
 	assert(d == 1);
 
-	THB_list_destroy(list);
+	AL_list_destroy(list);
 
 	free(list);
 

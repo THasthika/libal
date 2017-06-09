@@ -13,17 +13,17 @@ unsigned int hash_key(char *key, unsigned int count)
 	return k % count;
 }
 
-void THB_hash_table_create(THB_HashTable *hash_table, size_t item_size, unsigned int count, void (*destroy)(void *data))
+void AL_hash_table_create(AL_HashTable *hash_table, size_t item_size, unsigned int count, void (*destroy)(void *data))
 {
 	hash_table->item_size = item_size;
 	hash_table->count = count;
 	hash_table->destroy = destroy;
-	hash_table->table = calloc(count, sizeof(THB_HashItem*));
+	hash_table->table = calloc(count, sizeof(AL_HashItem*));
 }
 
-void THB_hash_table_destroy(THB_HashTable *hash_table)
+void AL_hash_table_destroy(AL_HashTable *hash_table)
 {
-	THB_HashItem *item = NULL;
+	AL_HashItem *item = NULL;
 	for(int i = 0; i < hash_table->count; i++) {
 		item = hash_table->table[i];
 		while(item != NULL) {
@@ -46,18 +46,18 @@ void THB_hash_table_destroy(THB_HashTable *hash_table)
 	hash_table->destroy = NULL;
 }
 
-void THB_hash_table_insert(THB_HashTable *hash_table, char *key, void *data)
+void AL_hash_table_insert(AL_HashTable *hash_table, char *key, void *data)
 {
 	int k = hash_key(key, hash_table->count);
-	THB_HashItem *item = malloc(sizeof(THB_HashItem));
+	AL_HashItem *item = malloc(sizeof(AL_HashItem));
 	item->key = (char*)strdup(key);
 	item->data = malloc(hash_table->item_size);
 	item->prev = NULL;
 	item->next = NULL;
 	memcpy(item->data, data, hash_table->item_size);
-	THB_HashItem *iitem = hash_table->table[k];
-	THB_HashItem *tmp = NULL;
-	THB_HashItem *prev = iitem;
+	AL_HashItem *iitem = hash_table->table[k];
+	AL_HashItem *tmp = NULL;
+	AL_HashItem *prev = iitem;
 	while(iitem != NULL) {
 		if(iitem->next == NULL)
 			prev = iitem;
@@ -83,10 +83,10 @@ void THB_hash_table_insert(THB_HashTable *hash_table, char *key, void *data)
 		hash_table->table[k] = item;
 }
 
-void THB_hash_table_remove(THB_HashTable *hash_table, char *key, void *data)
+void AL_hash_table_remove(AL_HashTable *hash_table, char *key, void *data)
 {
 	int k = hash_key(key, hash_table->count);
-	THB_HashItem *item = hash_table->table[k];
+	AL_HashItem *item = hash_table->table[k];
 	while(item != NULL) {
 		if(strcmp(item->key, key) == 0)
 			break;
@@ -109,10 +109,10 @@ void THB_hash_table_remove(THB_HashTable *hash_table, char *key, void *data)
 	free(item);
 }
 
-int THB_hash_table_search(THB_HashTable *hash_table, char *key, void **data)
+int AL_hash_table_search(AL_HashTable *hash_table, char *key, void **data)
 {
 	int k = hash_key(key, hash_table->count);
-	THB_HashItem *item = hash_table->table[k];
+	AL_HashItem *item = hash_table->table[k];
 	while(item != NULL) {
 		if(strcmp(item->key, key) == 0)
 			break;

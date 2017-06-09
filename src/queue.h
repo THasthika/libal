@@ -1,16 +1,16 @@
-#ifndef THB_QUEUE_H
-#define THB_QUEUE_H 1
+#ifndef AL_QUEUE_H
+#define AL_QUEUE_H 1
 
 #include <stdlib.h>
 
 #include "list.h"
 
-typedef THB_List THB_Queue;
+typedef AL_List AL_Queue;
 
-#define THB_queue_create THB_list_create
-#define THB_queue_destroy THB_list_destroy
+#define AL_queue_create AL_list_create
+#define AL_queue_destroy AL_list_destroy
 
-void THB_queue_enqueue(THB_Queue *queue, void *data);
-void THB_queue_dequeue(THB_Queue *queue, void *data);
+void AL_queue_enqueue(AL_Queue *queue, void *data);
+void AL_queue_dequeue(AL_Queue *queue, void *data);
 
-#endif // THB_QUEUE_H
+#endif // AL_QUEUE_H

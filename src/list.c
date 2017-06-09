@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void THB_list_create(THB_List *list, size_t item_size, void (*destroy)(void *data))
+void AL_list_create(AL_List *list, size_t item_size, void (*destroy)(void *data))
 {
 	list->item_size = item_size;
 	list->head = NULL;
@@ -12,9 +12,9 @@ void THB_list_create(THB_List *list, size_t item_size, void (*destroy)(void *dat
 	list->count = 0;
 }
 
-void THB_list_destroy(THB_List *list)
+void AL_list_destroy(AL_List *list)
 {
-	THB_ListItem *item;
+	AL_ListItem *item;
 	item = list->head;
 	while(item != NULL) {
 		if(list->destroy != NULL)
@@ -34,9 +34,9 @@ void THB_list_destroy(THB_List *list)
 	list->item_size = 0;
 }
 
-void THB_list_insert_after(THB_List *list, THB_ListItem *item, void *data)
+void AL_list_insert_after(AL_List *list, AL_ListItem *item, void *data)
 {
-	THB_ListItem *new_item = (THB_ListItem*)malloc(sizeof(THB_ListItem));
+	AL_ListItem *new_item = (AL_ListItem*)malloc(sizeof(AL_ListItem));
 	new_item->next = NULL;
 	new_item->prev = NULL;
 	if(item == NULL) {
@@ -59,9 +59,9 @@ void THB_list_insert_after(THB_List *list, THB_ListItem *item, void *data)
 	list->count++;
 }
 
-void THB_list_insert_before(THB_List *list, THB_ListItem *item, void *data)
+void AL_list_insert_before(AL_List *list, AL_ListItem *item, void *data)
 {
-	THB_ListItem *new_item = (THB_ListItem*)malloc(sizeof(THB_ListItem));
+	AL_ListItem *new_item = (AL_ListItem*)malloc(sizeof(AL_ListItem));
 	new_item->next = NULL;
 	new_item->prev = NULL;
 	if(item == NULL) {
@@ -84,7 +84,7 @@ void THB_list_insert_before(THB_List *list, THB_ListItem *item, void *data)
 	list->count++;
 }
 
-void THB_list_remove(THB_List *list, THB_ListItem *item, void *data)
+void AL_list_remove(AL_List *list, AL_ListItem *item, void *data)
 {
 	if(item == NULL) return;
 	if(item->next != NULL)
