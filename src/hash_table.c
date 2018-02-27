@@ -1,19 +1,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "common.h"
 #include "hash_table.h"
 
-unsigned int hash_key(char *key, unsigned int count)
+size_t hash_key(char *key, size_t count)
 {
-	unsigned int k = 0;
+	size_t k = 0;
 	char *ptr = key;
 	while(*ptr != '\0')
-		k += (int)*(ptr++);
+		k += (size_t)*(ptr++);
 	return k % count;
 }
 
-void AL_hash_table_create(AL_HashTable *hash_table, size_t item_size, unsigned int count, void (*destroy)(void *data))
+void AL_hash_table_create(AL_HashTable *hash_table, size_t item_size, size_t count, void (*destroy)(void *data))
 {
 	hash_table->item_size = item_size;
 	hash_table->count = count;
@@ -24,7 +23,7 @@ void AL_hash_table_create(AL_HashTable *hash_table, size_t item_size, unsigned i
 void AL_hash_table_destroy(AL_HashTable *hash_table)
 {
 	AL_HashItem *item = NULL;
-	for(int i = 0; i < hash_table->count; i++) {
+	for(size_t i = 0; i < hash_table->count; i++) {
 		item = hash_table->table[i];
 		while(item != NULL) {
 			if(hash_table->destroy != NULL)
@@ -48,7 +47,7 @@ void AL_hash_table_destroy(AL_HashTable *hash_table)
 
 void AL_hash_table_insert(AL_HashTable *hash_table, char *key, void *data)
 {
-	int k = hash_key(key, hash_table->count);
+	size_t k = hash_key(key, hash_table->count);
 	AL_HashItem *item = malloc(sizeof(AL_HashItem));
 	item->key = (char*)strdup(key);
 	item->data = malloc(hash_table->item_size);
@@ -85,7 +84,7 @@ void AL_hash_table_insert(AL_HashTable *hash_table, char *key, void *data)
 
 void AL_hash_table_remove(AL_HashTable *hash_table, char *key, void *data)
 {
-	int k = hash_key(key, hash_table->count);
+	size_t k = hash_key(key, hash_table->count);
 	AL_HashItem *item = hash_table->table[k];
 	while(item != NULL) {
 		if(strcmp(item->key, key) == 0)
@@ -111,7 +110,7 @@ void AL_hash_table_remove(AL_HashTable *hash_table, char *key, void *data)
 
 int AL_hash_table_search(AL_HashTable *hash_table, char *key, void **data)
 {
-	int k = hash_key(key, hash_table->count);
+	size_t k = hash_key(key, hash_table->count);
 	AL_HashItem *item = hash_table->table[k];
 	while(item != NULL) {
 		if(strcmp(item->key, key) == 0)

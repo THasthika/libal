@@ -1,6 +1,8 @@
-#ifndef LIBAL_COMMON_H
-#define LIBAL_COMMON_H 1
+#ifndef AL_COMMON_H
+#define AL_COMMON_H 1
 
-char* strdup(const char *s);
 
-#endif // LIBAL_COMMON_H
+
+/* char* strdup(const char *s); */
+
+#endif // AL_COMMON_H

@@ -21,5 +21,9 @@ Makefile.in
 /m4/*
 !/m4/NOTES
 
-/src/.deps
+.deps
+.libs
 *.o
+*.lo
+*.la
+Makefile

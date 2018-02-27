@@ -1,4 +1,4 @@
-AM_CFLAGS = -g -std=c99
+AM_CFLAGS = -g -std=gnu99
 AM_LDFLAGS = -g
 
 lib_LTLIBRARIES = libal.la

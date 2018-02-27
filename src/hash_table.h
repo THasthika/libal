@@ -12,12 +12,12 @@ typedef struct _AL_HashItem {
 
 typedef struct {
 	size_t item_size;
-	unsigned int count;
+	size_t count;
 	void (*destroy)(void *data);
 	AL_HashItem **table;
 } AL_HashTable;
 
-void AL_hash_table_create(AL_HashTable *hash_table, size_t item_size, unsigned int count, void (*destroy)(void *data));
+void AL_hash_table_create(AL_HashTable *hash_table, size_t item_size, size_t count, void (*destroy)(void *data));
 void AL_hash_table_destroy(AL_HashTable *hash_table);
 
 void AL_hash_table_insert(AL_HashTable *hash_table, char *key, void *data);
