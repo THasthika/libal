@@ -6,19 +6,25 @@ A C library with useful data structures and algorithms
 
 ## Data Structures
 
-- Linked List (Double)
-- Stack
-- Queue
-- Hash Table
-- Binary Search Tree
+### Basics
+
+- [x] Linked List (Double)
+- [x] Stack
+- [x] Queue
+- [x] Hash Table
+
+### Trees
+
+- [ ] Binary Search Tree
+- [ ] Red Black Tree
 
 ## Algorithms
 
 ### Sorting Algorithms
 
-- Insertion Sort
-- Merge Sort
-- Heap Sort
+- [x] Insertion Sort
+- [x] Merge Sort
+- [x] Heap Sort
 
 ### Installation
 
