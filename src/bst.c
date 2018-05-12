@@ -21,55 +21,65 @@ void bst_swap_node(AL_BST_Node *a, AL_BST_Node *b)
     b->key = tmp_key;
 }
 
-void bst_get_predecessor(AL_BST_Node *node, AL_BST_Node **predecessor, AL_BST_Node **parent)
+void bst_get_predecessor(AL_BST_Node *node, AL_BST_Node **predecessor)
 {
     *predecessor = NULL;
-    *parent = NULL;
     if (node == NULL) return;
-    if (node->left == NULL) return;
-    *parent = node;
-    *predecessor = node->left;
-    while ((*predecessor)->right != NULL) {
-        *parent = *predecessor;
-        *predecessor = (*predecessor)->right;
+    if (node->left == NULL) {
+        if (node->parent == NULL) return;
+        *predecessor = node->parent;
+        while (*predecessor != NULL && node == (*predecessor)->left) {
+            node = *predecessor;
+            *predecessor = node->parent;
+        }
+    } else {
+        *predecessor = node->left;
+        while ((*predecessor)->right != NULL) {
+            *predecessor = (*predecessor)->right;
+        }
     }
 }
 
-void bst_get_successor(AL_BST_Node *node, AL_BST_Node **successor, AL_BST_Node **parent)
+void bst_get_successor(AL_BST_Node *node, AL_BST_Node **successor)
 {
     *successor = NULL;
-    *parent = NULL;
     if (node == NULL) return;
-    if (node->right == NULL) return;
-    *parent = node;
-    *successor = node->right;
-    while ((*successor)->left != NULL) {
-        *parent = *successor;
-        *successor = (*successor)->left;
+    if (node->right == NULL) {
+        if (node->parent == NULL) return;
+        *successor = node->parent;
+        while (*successor != NULL && node == (*successor)->right) {
+            node = *successor;
+            *successor = node->parent;
+        }
+    } else {
+        *successor = node->right;
+        while ((*successor)->left != NULL) {
+            *successor = (*successor)->left;
+        }
     }
 }
 
-void bst_remove_node(AL_BST *tree, AL_BST_Node *node, AL_BST_Node *parent)
+void bst_remove_node(AL_BST *tree, AL_BST_Node *node)
 {
-    AL_BST_Node *c, *p;
+    AL_BST_Node *c;
     if (node == NULL) return;
-    if (node->left != NULL) {
-        bst_get_predecessor(node, &c, &p);
-        bst_swap_node(node, c);
-        bst_remove_node(tree, c, p);
-        return;
-    }
     if (node->right != NULL) {
-        bst_get_successor(node, &c, &p);
+        bst_get_successor(node, &c);
         bst_swap_node(node, c);
-        bst_remove_node(tree, c, p);
+        bst_remove_node(tree, c);
         return;
     }
-    if (parent != NULL) {
-        if (parent->left == node) {
-            parent->left = NULL;
+    if (node->left != NULL) {
+        bst_get_predecessor(node, &c);
+        bst_swap_node(node, c);
+        bst_remove_node(tree, c);
+        return;
+    }
+    if (node->parent != NULL) {
+        if (node->parent->left == node) {
+            node->parent->left = NULL;
         } else {
-            parent->right = NULL;
+            node->parent->right = NULL;
         }
     }
     if (node == tree->root) {
@@ -77,7 +87,9 @@ void bst_remove_node(AL_BST *tree, AL_BST_Node *node, AL_BST_Node *parent)
     }
     if (tree->destroy != NULL) // destroy function if exist
         tree->destroy(node->data);
+    node->parent = node->left = node->right = NULL;
     free(node->data);
+    node->data = NULL;
     free(node);
 }
 
@@ -138,12 +150,14 @@ void AL_bst_insert(AL_BST *tree, int key, void *data)
     while (1) {
         if (node->key > p->key) {
             if (p->right == NULL) {
+                node->parent = p;
                 p->right = node;
                 break;
             }
             p = p->right;
         } else {
             if (p->left == NULL) {
+                node->parent = p;
                 p->left = node;
                 break;
             }
@@ -154,12 +168,10 @@ void AL_bst_insert(AL_BST *tree, int key, void *data)
 
 void AL_bst_remove(AL_BST *tree, int key, void *data)
 {
-    AL_BST_Node *n, *p;
+    AL_BST_Node *n;
     n = tree->root;
-    p = NULL;
 
     while (n != NULL && n->key != key) {
-        p = n;
         if (key > n->key) {
             n = n->right;
         } else {
@@ -172,7 +184,7 @@ void AL_bst_remove(AL_BST *tree, int key, void *data)
     if (data != NULL)
         memcpy(data, n->data, tree->item_size);
 
-    bst_remove_node(tree, n, p);
+    bst_remove_node(tree, n);
 
     tree->count--;
 }
