@@ -15,7 +15,7 @@ A C library with useful data structures and algorithms
 
 ### Trees
 
-- [ ] Binary Search Tree
+- [x] Binary Search Tree
 - [ ] Red Black Tree
 
 ## Algorithms

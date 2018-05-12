@@ -1,6 +1,6 @@
 AC_PREREQ([2.0])
 
-AC_INIT([libal], [1.0], [tharindubathigama@gmail.com])
+AC_INIT([libal], [1.1], [tharindubathigama@gmail.com])
 
 AC_CONFIG_HEADERS([config.h])
 

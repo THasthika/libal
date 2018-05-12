@@ -23,6 +23,6 @@ void AL_bst_destroy(AL_BST *tree);
 
 void AL_bst_insert(AL_BST *tree, int key, void *data);
 void AL_bst_remove(AL_BST *tree, int key, void *data);
-void AL_bst_search(AL_BST *tree, int key, void **data);
+int AL_bst_search(AL_BST *tree, int key, void **data);
 
 #endif // AL_BST_H
