@@ -1,7 +1,7 @@
-#include "list.h"
-
-#include <stdlib.h>
+#include "common.h"
 #include <string.h>
+
+#include "list.h"
 
 void AL_list_create(AL_List *list, size_t item_size, void (*destroy)(void *data))
 {

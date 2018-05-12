@@ -1,7 +1,7 @@
-#include "stack.h"
-
-#include <stdlib.h>
+#include "common.h"
 #include <string.h>
+
+#include "stack.h"
 
 void AL_stack_create(AL_Stack *stack, size_t item_size, size_t inc_size, void (*destroy)(void *data))
 {

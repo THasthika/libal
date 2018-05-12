@@ -1,7 +1,7 @@
 #ifndef AL_QUEUE_H
 #define AL_QUEUE_H 1
 
-#include <stdlib.h>
+#include "common.h"
 
 #include "list.h"
 

@@ -1,8 +1,6 @@
 #ifndef AL_STACK_H
 #define AL_STACK_H 1
 
-#include <stdlib.h>
-
 typedef struct _AL_Stack {
         size_t capacity;
         size_t item_size;

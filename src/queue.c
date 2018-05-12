@@ -1,8 +1,8 @@
+#include "common.h"
+#include <string.h>
+
 #include "queue.h"
 #include "list.h"
-
-#include <stdlib.h>
-#include <string.h>
 
 void AL_queue_enqueue(AL_Queue *queue, void *data)
 {

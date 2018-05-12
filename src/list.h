@@ -1,7 +1,7 @@
 #ifndef AL_LIST_H
 #define AL_LIST_H 1
 
-#include <stdlib.h>
+#include "common.h"
 
 typedef struct _AL_ListItem {
 	struct _AL_ListItem *prev;

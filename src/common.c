@@ -1,7 +1,5 @@
-#include <stdlib.h>
-#include <string.h>
-
 #include "common.h"
+#include <string.h>
 
 /* char* strdup(const char *s) */
 /* { */

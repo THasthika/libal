@@ -1,7 +1,7 @@
 #ifndef AL_HASH_TABLE_H
 #define AL_HASH_TABLE_H 1
 
-#include <stdlib.h>
+#include "common.h"
 
 typedef struct _AL_HashItem {
 	struct _AL_HashItem *prev;
