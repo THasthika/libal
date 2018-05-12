@@ -7,18 +7,33 @@
 
 #define AL_BST_STACK_INC_SIZE 10
 
-void bst_swap_node(AL_BST_Node *a, AL_BST_Node *b)
+// transplant v in the place of u
+void bst_transplant(AL_BST *tree, AL_BST_Node *u, AL_BST_Node *v)
 {
-    if (a == NULL || b == NULL)
-        return;
-    void *tmp_data;
-    int tmp_key;
-    tmp_data = a->data;
-    tmp_key = a->key;
-    a->data = b->data;
-    a->key = b->key;
-    b->data = tmp_data;
-    b->key = tmp_key;
+    if (u->parent == NULL)
+        tree->root = v;
+    else if (u->parent->left == u)
+        u->parent->left = v;
+    else
+        u->parent->right = v;
+    if (v != NULL)
+        v->parent = u->parent;
+}
+
+void bst_minimum(AL_BST_Node *node, AL_BST_Node **min)
+{
+    *min = node;
+    while ((*min)->left != NULL) {
+        *min = (*min)->left;
+    }
+}
+
+void bst_maximum(AL_BST_Node *node, AL_BST_Node **max)
+{
+    *max = node;
+    while ((*max)->right != NULL) {
+        *max = (*max)->right;
+    }
 }
 
 void bst_get_predecessor(AL_BST_Node *node, AL_BST_Node **predecessor)
@@ -27,16 +42,14 @@ void bst_get_predecessor(AL_BST_Node *node, AL_BST_Node **predecessor)
     if (node == NULL) return;
     if (node->left == NULL) {
         if (node->parent == NULL) return;
-        *predecessor = node->parent;
-        while (*predecessor != NULL && node == (*predecessor)->left) {
-            node = *predecessor;
-            *predecessor = node->parent;
+        *predecessor = node;
+        node = node->parent;
+        while (node != NULL && *predecessor == node->left) {
+            *predecessor = node;
+            node = node->parent;
         }
     } else {
-        *predecessor = node->left;
-        while ((*predecessor)->right != NULL) {
-            *predecessor = (*predecessor)->right;
-        }
+        bst_maximum(node->left, predecessor);
     }
 }
 
@@ -46,50 +59,47 @@ void bst_get_successor(AL_BST_Node *node, AL_BST_Node **successor)
     if (node == NULL) return;
     if (node->right == NULL) {
         if (node->parent == NULL) return;
-        *successor = node->parent;
-        while (*successor != NULL && node == (*successor)->right) {
-            node = *successor;
-            *successor = node->parent;
+        *successor = node;
+        node = node->parent;
+        while (node != NULL && *successor == node->right) {
+            *successor = node;
+            node = node->parent;
         }
     } else {
-        *successor = node->right;
-        while ((*successor)->left != NULL) {
-            *successor = (*successor)->left;
-        }
+        bst_minimum(node->right, successor);
     }
 }
 
 void bst_remove_node(AL_BST *tree, AL_BST_Node *node)
 {
-    AL_BST_Node *c;
-    if (node == NULL) return;
-    if (node->right != NULL) {
-        bst_get_successor(node, &c);
-        bst_swap_node(node, c);
-        bst_remove_node(tree, c);
-        return;
-    }
-    if (node->left != NULL) {
-        bst_get_predecessor(node, &c);
-        bst_swap_node(node, c);
-        bst_remove_node(tree, c);
-        return;
-    }
-    if (node->parent != NULL) {
-        if (node->parent->left == node) {
-            node->parent->left = NULL;
-        } else {
-            node->parent->right = NULL;
+    AL_BST_Node *y = NULL;
+    if (node->left == NULL && node->right != NULL) {
+        bst_transplant(tree, node, node->right);
+    } else if (node->left != NULL && node->right == NULL) {
+        bst_transplant(tree, node, node->left);
+    } else if (node->left != NULL && node->right != NULL) {
+        bst_minimum(node->right, &y);
+        if (y != NULL && y->parent != node) {
+            bst_transplant(tree, y, y->right);
+            y->right = node->right;
+            y->right->parent = y;
+        }
+        bst_transplant(tree, node, y);
+        y->left = node->left;
+        y->left->parent = y;
+    } else {
+        if (node->parent != NULL) {
+            if (node->parent->left == node)
+                node->parent->left = NULL;
+            else
+                node->parent->right = NULL;
         }
     }
-    if (node == tree->root) {
-        tree->root = NULL;
-    }
-    if (tree->destroy != NULL) // destroy function if exist
+    if (tree->destroy != NULL)
         tree->destroy(node->data);
-    node->parent = node->left = node->right = NULL;
     free(node->data);
     node->data = NULL;
+    node->parent = node->left = node->right = NULL;
     free(node);
 }
 

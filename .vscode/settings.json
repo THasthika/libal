@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "string_view": "c",
-        "bst.h": "c"
+        "bst.h": "c",
+        "string.h": "c",
+        "queue.h": "c",
+        "rbt.h": "c",
+        "stack.h": "c",
+        "limits": "c"
     }
 }

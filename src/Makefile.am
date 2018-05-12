@@ -9,7 +9,8 @@ libal_la_SOURCES = common.c common.h\
 		    stack.c stack.h\
 		    hash_table.c hash_table.h\
 		    sort.h sort.c\
-			bst.h bst.c
+			bst.h bst.c\
+			rbt.h rbt.c
 
 al_includedir = $(includedir)/al
 
@@ -18,4 +19,5 @@ al_include_HEADERS = list.h\
 			 stack.h\
 			 hash_table.h\
 			 sort.h\
-			 bst.h
+			 bst.h\
+			 rbt.h
