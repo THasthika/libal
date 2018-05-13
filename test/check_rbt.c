@@ -33,12 +33,16 @@ void print_rbt(AL_RBT *tree)
         if (plevel != level) {
             printf("\nlevel %2d:", level);
         }
-        memcpy(&val, node->data, sizeof(int));
         if(node->color == AL_RBT_COLOR_BLACK)
             printf("b:");
         else
             printf("r:");
-        printf("%d    ", val);
+        if (node->parent != NULL)
+            printf("%2d", node->parent->key);
+        else
+            printf("root");
+        printf(" -> %2d", node->key);
+        printf("    ");
         if (node->left != NULL)
             AL_queue_enqueue(pq, &node->left);
         if (node->right != NULL)
@@ -65,19 +69,15 @@ int main(int argc, char **argv)
 
     int a, *b;
 
-    a = 50;
+    a = 1;
     AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
 
-    a = 25;
+    a = 2;
     AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
 
-    a = 75;
-    AL_rbt_insert(ptree, a, &a);
-
-    a = 27;
-    AL_rbt_insert(ptree, a, &a);
-
-    a = 20;
+    a = 3;
     AL_rbt_insert(ptree, a, &a);
     print_rbt(ptree);
 
@@ -85,27 +85,30 @@ int main(int argc, char **argv)
     AL_rbt_insert(ptree, a, &a);
     print_rbt(ptree);
 
-    a = 65;
-    AL_rbt_insert(ptree, a, &a);
-    print_rbt(ptree);
-
-    a = 120;
-    AL_rbt_insert(ptree, a, &a);
-    print_rbt(ptree);
-
     a = 99;
     AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
+
+    a = 98;
+    AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
+
+    a = 4;
+    AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
+
+    a = 5;
+    AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
+
+    a = 0;
+
+    AL_rbt_remove(ptree, 5, &a);
     print_rbt(ptree);
 
     AL_rbt_remove(ptree, 100, &a);
     print_rbt(ptree);
 
-    AL_rbt_remove(ptree, 120, &a);
-    print_rbt(ptree);
-
-    // assert(ptree->root->color == AL_RBT_COLOR_BLACK);
-    // assert(ptree->root->left->color == AL_RBT_COLOR_RED);
-    
     AL_rbt_destroy(ptree);
 
     return 0;
