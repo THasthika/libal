@@ -29,3 +29,5 @@ libtool
 config.status
 config.log
 config.h
+
+.vscode
