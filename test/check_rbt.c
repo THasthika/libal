@@ -101,13 +101,13 @@ int main(int argc, char **argv)
     AL_rbt_insert(ptree, a, &a);
     print_rbt(ptree);
 
-    a = 0;
+    // a = 0;
 
-    AL_rbt_remove(ptree, 5, &a);
-    print_rbt(ptree);
+    // AL_rbt_remove(ptree, 5, &a);
+    // print_rbt(ptree);
 
-    AL_rbt_remove(ptree, 100, &a);
-    print_rbt(ptree);
+    // AL_rbt_remove(ptree, 100, &a);
+    // print_rbt(ptree);
 
     AL_rbt_destroy(ptree);
 
