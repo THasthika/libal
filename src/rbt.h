@@ -3,11 +3,9 @@
 
 #include "common.h"
 
-#define AL_RBT_COLOR_RED 0x00
-#define AL_RBT_COLOR_BLACK 0x01
-#define AL_RBT_IS_NULL 0x02
-
-#define AL_rbt_is_null(node) (node->color & AL_RBT_IS_NULL == 1)
+#define AL_RBT_COLOR_RED 0x01
+#define AL_RBT_COLOR_BLACK 0x03
+#define AL_RBT_COLOR_DOUBLE_BLACK 0x04
 
 typedef struct _AL_RBT_Node {
     struct _AL_RBT_Node *parent;

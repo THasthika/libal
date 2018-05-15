@@ -1,5 +1,5 @@
-AM_CFLAGS = -g3 -std=gnu99
-AM_LDFLAGS = -g3
+AM_CFLAGS = -g3 -O0 -std=gnu99
+AM_LDFLAGS = -g3 -O0
 
 lib_LTLIBRARIES = libal.la
 

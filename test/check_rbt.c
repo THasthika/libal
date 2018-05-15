@@ -37,11 +37,11 @@ void print_rbt(AL_RBT *tree)
             printf("b:");
         else
             printf("r:");
+        printf("%2d <- ", node->key);
         if (node->parent != NULL)
             printf("%2d", node->parent->key);
         else
             printf("root");
-        printf(" -> %2d", node->key);
         printf("    ");
         if (node->left != NULL)
             AL_queue_enqueue(pq, &node->left);
@@ -101,13 +101,40 @@ int main(int argc, char **argv)
     AL_rbt_insert(ptree, a, &a);
     print_rbt(ptree);
 
-    // a = 0;
+    a = 10;
+    AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
 
-    // AL_rbt_remove(ptree, 5, &a);
-    // print_rbt(ptree);
+    a = 20;
+    AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
 
-    // AL_rbt_remove(ptree, 100, &a);
-    // print_rbt(ptree);
+    a = 30;
+    AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
+
+    a = 7;
+    AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
+
+    
+    a = 0;
+
+    AL_rbt_remove(ptree, 5, &a);
+    print_rbt(ptree);
+
+    AL_rbt_remove(ptree, 7, &a);
+    print_rbt(ptree);
+
+    a = 97;
+    AL_rbt_insert(ptree, a, &a);
+    print_rbt(ptree);
+
+    AL_rbt_remove(ptree, 30, &a);
+    print_rbt(ptree);
+
+    AL_rbt_remove(ptree, 97, &a);
+    print_rbt(ptree);
 
     AL_rbt_destroy(ptree);
 
