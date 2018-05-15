@@ -128,78 +128,6 @@ void rbt_insert_fixup(AL_RBT *tree, AL_RBT_Node *node)
     tree->root->color = AL_RBT_COLOR_BLACK;
 }
 
-//        if (node == node->parent->left) {
-//             w = node->parent->right;
-//             if (rbt_is_red(w)) { // w is RED
-//                 w->color = AL_RBT_COLOR_BLACK;
-//                 node->parent->color == AL_RBT_COLOR_RED;
-//                 rbt_left_rotate(tree, node->parent);
-//                 w = node->parent->right;
-//             }
-//             if (rbt_is_black(w->left) && rbt_is_black(w->right)) {
-//                 if (w != NULL) w->color = AL_RBT_COLOR_RED;
-//                 node = node->parent;
-//             } else if (rbt_is_black(w->right)) {
-//                 if (w != NULL && w->left != NULL) w->left->color = AL_RBT_COLOR_BLACK;
-//                 if (w != NULL) w->color = AL_RBT_COLOR_RED;
-//                 rbt_right_rotate(tree, w);
-//                 w = node->parent->right;
-//             }
-//             if (w != NULL) w->color = node->parent->color;
-//             node->parent->color = AL_RBT_COLOR_BLACK;
-//             if (w != NULL && w->right != NULL) w->right->color = AL_RBT_COLOR_BLACK;
-//             rbt_left_rotate(tree, node->parent);
-//             node = tree->root;
-//         } else {
-
-//             w = node->parent->left;
-//             if (rbt_is_red(w)) { // w is RED
-//                 w->color = AL_RBT_COLOR_BLACK;
-//                 node->parent->color == AL_RBT_COLOR_RED;
-//                 rbt_right_rotate(tree, node->parent);
-//                 w = node->parent->left;
-//             }
-//             if (w != NULL && rbt_is_black(w->left) && rbt_is_black(w->right)) {
-//                 w->color = AL_RBT_COLOR_RED;
-//                 node = node->parent;
-//             } else {
-//                 if (w != NULL && rbt_is_black(w->left)) {
-//                     if (w->right != NULL) w->right->color = AL_RBT_COLOR_BLACK;
-//                     w->color = AL_RBT_COLOR_RED;
-//                     rbt_left_rotate(tree, w);
-//                     w = node->parent->right;
-//                 }
-//                 if (w != NULL) w->color = node->parent->color;
-//                 node->parent->color = AL_RBT_COLOR_BLACK;
-//                 if (w != NULL && w->left != NULL) w->left->color = AL_RBT_COLOR_BLACK;
-//                 rbt_right_rotate(tree, node->parent);
-//                 node = tree->root;
-//             }
-//             // w = node->parent->left;
-//             // if (rbt_is_red(w)) { // w is RED
-//             //     w->color = AL_RBT_COLOR_BLACK;
-//             //     node->parent->color == AL_RBT_COLOR_RED;
-//             //     rbt_left_rotate(tree, node->parent);
-//             //     w = node->parent->left;
-//             // }
-//             // if (w != NULL) {
-//             //     if (rbt_is_black(w->left) && rbt_is_black(w->right)) {
-//             //         w->color = AL_RBT_COLOR_RED;
-//             //         node = node->parent;
-//             //     } else if (rbt_is_black(w->left)) {
-//             //         if (w->right != NULL) w->right->color = AL_RBT_COLOR_BLACK;
-//             //         w->color = AL_RBT_COLOR_RED;
-//             //         rbt_left_rotate(tree, w);
-//             //         w = node->parent->left;
-//             //     }
-//             //     w->color = node->parent->color;
-//             //     node->parent->color = AL_RBT_COLOR_BLACK;
-//             //     if (w->left != NULL) w->left->color = AL_RBT_COLOR_BLACK;
-//             //     rbt_right_rotate(tree, node->parent);
-//             //     node = tree->root;
-//             // }
-//         }
-
 void rbt_delete_fixup(AL_RBT *tree, AL_RBT_Node *node)
 {
     AL_RBT_Node *w;
@@ -215,7 +143,7 @@ void rbt_delete_fixup(AL_RBT *tree, AL_RBT_Node *node)
                 w = node->parent->right;
             }
             if (w != NULL && rbt_is_black(w->left) && rbt_is_black(w->right)) {
-                w->color = AL_RBT_COLOR_BLACK;
+                w->color = AL_RBT_COLOR_RED;
                 node = node->parent;
             } else if (w != NULL) {
                 if (rbt_is_black(w->right)) {
@@ -239,7 +167,7 @@ void rbt_delete_fixup(AL_RBT *tree, AL_RBT_Node *node)
                 w = node->parent->left;
             }
             if (w != NULL && rbt_is_black(w->left) && rbt_is_black(w->right)) {
-                w->color = AL_RBT_COLOR_BLACK;
+                w->color = AL_RBT_COLOR_RED;
                 node = node->parent;
             } else if (w != NULL) {
                 if (rbt_is_black(w->left)) {
