@@ -213,3 +213,22 @@ int AL_bst_search(AL_BST *tree, int key, void **data)
     *data = n->data;
     return  1;
 }
+
+int bst_max_height_aux(AL_BST_Node *node)
+{
+    if (node == NULL) return 0;
+    int h = 1;
+    int lh = bst_max_height_aux(node->left);
+    int rh = bst_max_height_aux(node->right);
+    if (lh > rh) {
+        h += lh;
+    } else {
+        h += rh;
+    }
+    return h;
+}
+
+int AL_bst_max_height(AL_BST *tree)
+{
+    return bst_max_height_aux(tree->root);
+}

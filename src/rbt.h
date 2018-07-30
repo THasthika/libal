@@ -30,4 +30,6 @@ void AL_rbt_insert(AL_RBT *tree, int key, void *data);
 void AL_rbt_remove(AL_RBT *tree, int key, void *data);
 int AL_rbt_search(AL_RBT *tree, int key, void **data);
 
+int AL_rbt_max_height(AL_RBT *tree);
+
 #endif // AL_RBT_H

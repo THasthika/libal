@@ -353,4 +353,36 @@ void AL_rbt_remove(AL_RBT *tree, int key, void *data)
     tree->count--;
 }
 
-// int AL_rbt_search(AL_RBT *tree, int key, void **data);
+int AL_rbt_search(AL_RBT *tree, int key, void **data)
+{
+    AL_RBT_Node *n = tree->root;
+    while (n != NULL && n->key != key) {
+        if (key > n->key) {
+            n = n->right;
+        } else {
+            n = n->left;
+        }
+    }
+    if (n == NULL) return 0;
+    *data = n->data;
+    return  1;
+}
+
+int rbt_max_height_aux(AL_RBT_Node *node)
+{
+    if (node == NULL) return 0;
+    int h = 1;
+    int lh = rbt_max_height_aux(node->left);
+    int rh = rbt_max_height_aux(node->right);
+    if (lh > rh) {
+        h += lh;
+    } else {
+        h += rh;
+    }
+    return h;
+}
+
+int AL_rbt_max_height(AL_RBT *tree)
+{
+    return rbt_max_height_aux(tree->root);
+}

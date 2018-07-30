@@ -85,6 +85,10 @@ int main(int argc, char **argv)
 
     assert(ptree->count == 9);
 
+    printf("height: %d\n", AL_bst_max_height(ptree));
+
+    print_bst(ptree);
+
     a = 0;
 
     AL_bst_remove(ptree, 1, &a);

@@ -25,4 +25,6 @@ void AL_bst_insert(AL_BST *tree, int key, void *data);
 void AL_bst_remove(AL_BST *tree, int key, void *data);
 int AL_bst_search(AL_BST *tree, int key, void **data);
 
+int AL_bst_max_height(AL_BST *tree);
+
 #endif // AL_BST_H

@@ -65,21 +65,42 @@ int main(int argc, char **argv)
 
     AL_rbt_create(ptree, sizeof(int), NULL);
 
-    int insert_numbers[] = {2, 1, 4, 5, 9, 3, 6, 7, 15, -1};
-    int remove_numbers[] = {3, 4, -1};
-    int t;
+    // int insert_numbers[] = {2, 1, 4, 5, 9, 3, 6, 7, 15, -1};
+    // int remove_numbers[] = {3, 4, -1};
+    // int t;
 
-    for (int *i = &insert_numbers[0]; *i != -1; i++) {
-        AL_rbt_insert(ptree, *i, i);
+    // for (int *i = &insert_numbers[0]; *i != -1; i++) {
+    //     AL_rbt_insert(ptree, *i, i);
+    // }
+
+    // print_rbt(ptree);
+
+    // for (int *i = remove_numbers; *i != -1; i++) {
+    //     AL_rbt_remove(ptree, *i, &t);
+    //     print_rbt(ptree);
+    //     assert(t == *i);
+    // }
+
+    int k = 0;
+    int l = 32 / 2;
+
+    for (int i = 1; i <= l; i++) {
+        AL_rbt_insert(ptree, i, &i);
+        k = (l - i - 1) * 2;
+        AL_rbt_insert(ptree, k, &k);
     }
 
     print_rbt(ptree);
 
-    for (int *i = remove_numbers; *i != -1; i++) {
-        AL_rbt_remove(ptree, *i, &t);
-        print_rbt(ptree);
-        assert(t == *i);
-    }
+    int h = AL_rbt_max_height(ptree);
+
+    printf("%d\n", h);
+
+    // int *a;
+
+    // AL_rbt_search(ptree, 10, (void**)&a);
+
+    // printf("%d\n", *a);
 
     // a = 1;
     // AL_rbt_insert(ptree, a, &a);
