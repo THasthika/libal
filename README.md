@@ -26,6 +26,10 @@ A C library with useful data structures and algorithms
 - [x] Merge Sort
 - [x] Heap Sort
 
+### Dynamic Algorithms
+
+- [x] Longest Common Subsequence
+
 ### Installation
 
 1. run `./autogen.sh` in the repo directory

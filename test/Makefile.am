@@ -7,7 +7,8 @@ check_PROGRAMS = check_list\
 		 check_stack\
 		 check_hash_table\
 		 check_bst\
-		 check_rbt
+		 check_rbt\
+		 check_dynamic
 
 TESTS = $(check_PROGRAMS)
 
@@ -31,3 +32,6 @@ check_bst_LDADD = -lal
 
 check_rbt_SOURCES = check_rbt.c
 check_rbt_LDADD = -lal
+
+check_dynamic_SOURCES = check_dynamic.c
+check_dynamic_LDADD = -lal

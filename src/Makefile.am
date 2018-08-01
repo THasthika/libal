@@ -10,7 +10,8 @@ libal_la_SOURCES = common.c common.h\
 		    hash_table.c hash_table.h\
 		    sort.h sort.c\
 			bst.h bst.c\
-			rbt.h rbt.c
+			rbt.h rbt.c\
+			dynamic.h dynamic.c
 
 al_includedir = $(includedir)/al
 
