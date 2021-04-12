@@ -1,4 +1,4 @@
-<!-- [![Build Status](https://travis-ci.org/tharindu96/libal.svg?branch=master)](https://travis-ci.org/tharindu96/libal) -->
+[![CMake](https://github.com/THasthika/libal/actions/workflows/cmake.yml/badge.svg)](https://github.com/THasthika/libal/actions/workflows/cmake.yml)
 
 # libal
 
