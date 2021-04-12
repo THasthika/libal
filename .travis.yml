@@ -3,6 +3,14 @@ language: c
 compiler:
         - gcc
 
+dist: bionic
+addons:
+  apt:
+    packages:
+      - cmake-data
+      - cmake
+
+
 before_install: mkdir build && cd build && cmake ../
 install: make && make test
 
