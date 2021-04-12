@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-inline int max(int a, int b);
+#define max(X, Y)  ((X) > (Y) ? (X) : (Y))
 
 int AL_longest_common_subsequence(size_t size, void *arr1, int arr1len, void *arr2, int arr2len, int (*comp)(void *key1, void *key2), void **ret)
 {
@@ -54,9 +54,4 @@ int AL_longest_common_subsequence(size_t size, void *arr1, int arr1len, void *ar
     }
 
     return M[arr1len][arr2len];
-}
-
-inline int max(int a, int b)
-{
-    return (a > b) ? a : b;
 }

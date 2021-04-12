@@ -1,7 +1,0 @@
-#!/bin/bash
-
-make mostlyclean
-make clean
-make distclean
-
-git add -A

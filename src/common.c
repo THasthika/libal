@@ -11,3 +11,8 @@
 
 /* 	return (char*) memcpy(new, s, len); */
 /* } */
+
+
+void mytestfunc() {
+    
+}

@@ -32,7 +32,8 @@ A C library with useful data structures and algorithms
 
 ### Installation
 
-1. run `./autogen.sh` in the repo directory
-2. run `./configure`
-3. run `make` to build the project
-4. run `make install` to install it to the system
+1. run `mkdir build` in the repo directory
+2. cd into the build dir `cd build`
+3. run `cmake ../`
+4. run `make` to build the project
+5. run `make install` to install it to the system

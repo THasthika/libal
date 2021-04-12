@@ -1,0 +1,3 @@
+// the configured options and settings for Tutorial
+#define LibAl_VERSION_MAJOR @LibAl_VERSION_MAJOR@
+#define LibAl_VERSION_MINOR @LibAl_VERSION_MINOR@

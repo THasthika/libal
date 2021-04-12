@@ -31,3 +31,5 @@ config.log
 config.h
 
 .vscode
+
+build/
