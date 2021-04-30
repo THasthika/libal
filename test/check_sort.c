@@ -63,13 +63,22 @@ void check_merge_sort(long count)
 	check_array(arr, count, ASC);
 }
 
+void check_quick_sort(long count)
+{
+	int arr[count];
+	init_array(arr, count);
+	AL_quick_sort(arr, sizeof(int), count, comp_int);
+	check_array(arr, count, ASC);
+}
+
 int main(int argc, char **argv)
 {
 	srand(time(NULL));
 
-	check_insertion_sort(10);
-	check_heap_sort(10);
-	check_merge_sort(10);
+	check_insertion_sort(100);
+	check_heap_sort(100);
+	check_merge_sort(100);
+	check_quick_sort(10);
 
 	return 0;
 }

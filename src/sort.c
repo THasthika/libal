@@ -163,9 +163,33 @@ void AL_merge_sort(void *arr, size_t size, size_t count, int (*comp)(void *key1,
 
 /************************** QUICK SORT ***************************/
 
+void partition(void *l, void *r, size_t size, int (*comp)(void *key1, void *key2), void **ret) {
+	void *x = r;
+	void *i = l - size;
+	for (void *j = l; j < r; j += size) {
+		// j <= x
+		if (comp(j, x) < 1) {
+			i += size;
+			swap(i, j, size);
+		}
+	}
+	i += size;
+	swap(i, r, size);
+	*ret = i;
+}
+
+void quick_sort(void *l, void *r, size_t size, int (*comp)(void *key1, void *key2), int lvl) {
+	if(l < r) {
+		void *q;
+		partition(l, r, size, comp, &q);
+		quick_sort(l, q - size, size, comp, lvl+1);
+		quick_sort(q + size, r, size, comp, lvl+1);
+	}
+}
+
 void AL_quick_sort(void *arr, size_t size, size_t count, int (*comp)(void *key1, void *key2))
 {
 	void *l = arr;
-	void *r = arr + size * count;
-	
+	void *r = arr + size * (count - 1);
+	quick_sort(l, r, size, comp, 0);
 }

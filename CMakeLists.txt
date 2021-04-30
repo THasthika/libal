@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.19)
 
 # set(PROJECT_NAME )
 
+set(CMAKE_C_STANDARD 99)
+
 project(LibAl VERSION 0.1)
 
 configure_file(libal_config.h.in libal_config.h)

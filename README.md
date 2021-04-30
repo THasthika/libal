@@ -25,6 +25,7 @@ A C library with useful data structures and algorithms
 - [x] Insertion Sort
 - [x] Merge Sort
 - [x] Heap Sort
+- [x] Quick Sort
 
 ### Dynamic Algorithms
 
